@@ -1,0 +1,45 @@
+import configuration from './configuration';
+import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces';
+import * as Joi from 'joi';
+
+export const configModuleOptions: ConfigModuleOptions = {
+  envFilePath: '.env',
+  load: [configuration],
+  validationSchema: Joi.object({
+    APP_ENV: Joi.string()
+      .valid('development', 'production', 'test')
+      .default('development'),
+    APP_PORT: Joi.number().required(),
+    DB_HOST: Joi.string().required(),
+    DB_PORT: Joi.number().optional(),
+    DB_NAME: Joi.string().required(),
+    DB_USER: Joi.string().required(),
+    DB_PASS: Joi.string().required(),
+    JWT_PUBLIC_KEY_BASE64: Joi.string().required(),
+    JWT_PRIVATE_KEY_BASE64: Joi.string().required(),
+    JWT_ACCESS_TOKEN_EXP_IN_SEC: Joi.number().required(),
+    JWT_REFRESH_TOKEN_EXP_IN_SEC: Joi.number().required(),
+    DEFAULT_ADMIN_USER_PASSWORD: Joi.string().required(),
+    MAIL_HOST: Joi.string().required(),
+    MAIL_PORT: Joi.number().required(),
+    MAIL_USER: Joi.string().required(),
+    MAIL_PASSWORD: Joi.string().required(),
+    MAIL_FROM: Joi.string().email().required(),
+    REDIS_HOST: Joi.string().required(),
+    REDIS_PORT: Joi.number().required(),
+    REDIS_PASSWORD: Joi.string().required(),
+    MULTER_DEST: Joi.string().required(),
+    SENTRY_DSN: Joi.string().required(),
+    // MINIO_ENDPOINT: Joi.string().required(),
+    // MINIO_PORT: Joi.number().required(),
+    // MINIO_BUCKET_NAME: Joi.string().required(),
+    // MINIO_ACCESS_KEY: Joi.string().required(),
+    // MINIO_SECRET_KEY: Joi.string().required(),
+    AWS_S3_ENDPOINT: Joi.string().required(),
+    // AWS_S3_PORT: Joi.number().required(),
+    AWS_S3_BUCKET: Joi.string().required(),
+    AWS_S3_ACCESS_KEY: Joi.string().required(),
+    AWS_S3_SECRET_KEY: Joi.string().required(),
+    AWS_S3_REGION: Joi.string().required(),
+  }),
+};
