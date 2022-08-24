@@ -26,37 +26,14 @@ export class MulterConfigService implements MulterOptionsFactory {
       accessKeyId: this.configService.get('awsS3.accessKey'),
       secretAccessKey: this.configService.get('awsS3.secretKey'),
     };
-    const endpoint: Endpoint = {
-      hostname: this.configService.get('awsS3.endPoint'),
-      // port: this.configService.get('awsS3.port'),
-      protocol: 'http:',
-      path: '/',
-    };
-    // const certs = [readFileSync('/path/to/cert.pem')];
-    // const agent = new Agent({
-    //   rejectUnauthorized: true,
-    //   ca: certs,
-    // });
+
     this.s3 = new S3Client({
-      endpoint: endpoint,
-      // endpoint: this.configService.get('awsS3.endPoint'),
+      endpoint: this.configService.get('awsS3.endPoint'),
       region: this.configService.get('awsS3.region'),
       credentials,
-      // sslEnabled: false,
       tls: false,
       forcePathStyle: true,
-      // signatureVersion: 'v4',
       logger: this.logger,
-      // requestHandler: new NodeHttp2Handler(),
-      // requestHandler: new NodeHttpHandler({
-      //   httpAgent: new Agent(),
-      // }),
-      // httpOptions: {
-      //   agent: new https.Agent({
-      //     rejectUnauthorized: true,
-      //     ca: certs
-      //   })
-      // }
     });
   }
 

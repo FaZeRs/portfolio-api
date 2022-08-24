@@ -3,7 +3,7 @@
 
 version: 2
 updates:
-  # Enable version updates for npm
+  # Maintain dependencies for npm
   - package-ecosystem: 'npm'
     # Look for `package.json` and `lock` files in the `root` directory
     directory: '/'
@@ -11,7 +11,7 @@ updates:
     schedule:
       interval: 'daily'
 
-  # Enable version updates for Docker
+  # Maintain dependencies for Docker
   - package-ecosystem: 'docker'
     # Look for a `Dockerfile` in the `root` directory
     directory: '/'
