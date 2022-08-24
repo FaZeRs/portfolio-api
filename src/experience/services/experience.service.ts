@@ -14,7 +14,7 @@ import { ExperienceOutput } from '../dto/experience-output.dto';
 import { Experience } from '../entities/experience.entity';
 import { Actor } from '../../shared/acl/actor.constant';
 import { Action } from '../../shared/acl/action.constant';
-import { File } from 'file/entities/file.entity';
+import { File } from '../../file/entities/file.entity';
 
 @Injectable()
 export class ExperienceService {

@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserModule } from '../user/user.module';
 import { JwtAuthStrategy } from '../auth/strategies/jwt-auth.strategy';
 import { Project } from './entities/project.entity';
-import { TagModule } from 'tag/tag.module';
+import { TagModule } from '../tag/tag.module';
 
 @Module({
   imports: [

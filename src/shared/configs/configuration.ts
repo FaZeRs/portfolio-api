@@ -7,7 +7,6 @@ export default (): any => ({
     name: process.env.DB_NAME,
     user: process.env.DB_USER,
     pass: process.env.DB_PASS,
-    // url: process.env.DB_URL,
   },
   jwt: {
     publicKey: Buffer.from(
@@ -40,22 +39,11 @@ export default (): any => ({
     port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD,
   },
-  multer: {
-    dest: process.env.MULTER_DEST,
-  },
   sentry: {
     dsn: process.env.SENTRY_DSN,
   },
-  // minio: {
-  //   endPoint: process.env.MINIO_ENDPOINT,
-  //   port: parseInt(process.env.MINIO_PORT),
-  //   bucketName: process.env.MINIO_BUCKET_NAME,
-  //   accessKey: process.env.MINIO_ACCESS_KEY,
-  //   secretKey: process.env.MINIO_SECRET_KEY,
-  // },
   awsS3: {
     endPoint: process.env.AWS_S3_ENDPOINT,
-    // port: parseInt(process.env.AWS_S3_PORT),
     accessKey: process.env.AWS_S3_ACCESS_KEY,
     secretKey: process.env.AWS_S3_SECRET_KEY,
     bucket: process.env.AWS_S3_BUCKET,

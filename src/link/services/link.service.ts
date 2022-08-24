@@ -64,7 +64,9 @@ export class LinkService {
     this.logger.log(ctx, `calling ${Repository.name}.findAndCount`);
     const [links, count] = await this.repository.findAndCount({
       where: {
-        project: project,
+        project: {
+          id: project,
+        }
       },
       take: limit,
       skip: offset,
