@@ -4,6 +4,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
+import * as argon2 from 'argon2';
 
 import { ROLE } from '../../auth/constants/role.constant';
 import { AppLogger } from '../../shared/logger/logger.service';
@@ -21,8 +22,10 @@ describe('UserService', () => {
     findAndCount: jest.fn(),
   };
 
+  const userId = uuidv4();
+
   const user = {
-    id: uuidv4(),
+    id: userId,
     username: 'jhon',
     name: 'Jhon doe',
     roles: [ROLE.USER],
@@ -54,7 +57,7 @@ describe('UserService', () => {
   describe('createUser', () => {
     beforeEach(() => {
       jest
-        .spyOn(bcrypt, 'hash')
+        .spyOn(argon2, 'hash')
         .mockImplementation(async () => 'hashed-password');
 
       jest
@@ -73,7 +76,7 @@ describe('UserService', () => {
       };
 
       await service.createUser(ctx, userInput);
-      expect(bcrypt.hash).toBeCalledWith(userInput.password, 10);
+      expect(argon2.hash).toBeCalledWith(userInput.password);
     });
 
     it('should save user with encrypted password', async () => {
@@ -100,7 +103,7 @@ describe('UserService', () => {
 
     it('should return serialized user', async () => {
       jest.spyOn(mockedRepository, 'save').mockImplementation(async (input) => {
-        input.id = 6;
+        input.id = userId;
         return input;
       });
 
@@ -216,7 +219,7 @@ describe('UserService', () => {
         .spyOn(mockedRepository, 'findOne')
         .mockImplementation(async () => user);
 
-      jest.spyOn(bcrypt, 'compare').mockImplementation(async () => false);
+      jest.spyOn(argon2, 'verify').mockImplementation(async () => false);
 
       await expect(
         service.validateUsernamePassword(ctx, 'jhon', 'password'),
@@ -228,7 +231,7 @@ describe('UserService', () => {
         .spyOn(mockedRepository, 'findOne')
         .mockImplementation(async () => user);
 
-      jest.spyOn(bcrypt, 'compare').mockImplementation(async () => true);
+      jest.spyOn(argon2, 'verify').mockImplementation(async () => true);
 
       const result = await service.validateUsernamePassword(
         ctx,
@@ -265,7 +268,9 @@ describe('UserService', () => {
     it('should find user from DB using given username', async () => {
       await service.findByUsername(ctx, user.username);
       expect(mockedRepository.findOne).toBeCalledWith({
-        username: user.username,
+        where: {
+          username: user.username,
+        }
       });
     });
 
@@ -322,7 +327,7 @@ describe('UserService', () => {
       };
 
       jest
-        .spyOn(bcrypt, 'hash')
+        .spyOn(argon2, 'hash')
         .mockImplementation(async () => 'updated-password');
 
       await service.updateUser(ctx, userId, input);

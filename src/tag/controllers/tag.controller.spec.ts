@@ -44,7 +44,6 @@ describe('TagController', () => {
     beforeEach(() => {
       input = {
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
       };
     });
@@ -59,7 +58,6 @@ describe('TagController', () => {
       const expectedOutput: TagOutput = {
         id: uuidv4(),
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
         createdAt: currentDate,
         updatedAt: currentDate,
@@ -120,7 +118,6 @@ describe('TagController', () => {
       const tagId = uuidv4();
       const input: UpdateTagInput = {
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
       };
       controller.update(ctx, tagId, input);

@@ -55,20 +55,17 @@ describe('TagService', () => {
 
       const tagInput: CreateTagInput = {
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
       };
 
       const expected = {
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
       };
 
       const expectedOutput = {
         id: uuidv4(),
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
       };
       mockedRepository.save.mockResolvedValue(expectedOutput);
@@ -89,7 +86,6 @@ describe('TagService', () => {
         {
           id: uuidv4(),
           title: 'Test',
-          color: '#FF0000',
           isActive: true,
           createdAt: currentDate,
           updatedAt: currentDate,
@@ -130,7 +126,6 @@ describe('TagService', () => {
       const expectedOutput: TagOutput = {
         id: uuidv4(),
         title: 'Test',
-        color: '#FF0000',
         isActive: true,
         createdAt: currentDate,
         updatedAt: currentDate,
@@ -166,14 +161,12 @@ describe('TagService', () => {
       const tagId = uuidv4();
       const input: UpdateTagInput = {
         title: 'New Test',
-        color: '#FF0000',
         isActive: true,
       };
 
       mockedRepository.findOne.mockResolvedValue({
         id: tagId,
         title: 'Old Test',
-        color: '#FF0000',
         isActive: true,
       });
 
@@ -192,21 +185,18 @@ describe('TagService', () => {
       const tagId = uuidv4();
       const input: UpdateTagInput = {
         title: 'New Test',
-        color: '#FF0000',
         isActive: true,
       };
 
       mockedRepository.findOne.mockResolvedValue({
         id: tagId,
         title: 'Old Test',
-        color: '#FF0000',
         isActive: true,
       });
 
       const expected = {
         id: tagId,
         title: 'New Test',
-        color: '#FF0000',
         isActive: true,
       };
       await service.update(ctx, tagId, input);
