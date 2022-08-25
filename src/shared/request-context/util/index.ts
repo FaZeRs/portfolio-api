@@ -1,4 +1,4 @@
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { Request } from 'express';
 
 import { UserAccessTokenClaims } from '../../../auth/dto/auth-token-output.dto';
@@ -19,7 +19,7 @@ export function createRequestContext(request: Request): RequestContext {
 
   // If request.user does not exist, we explicitly set it to null.
   ctx.user = request.user
-    ? plainToClass(UserAccessTokenClaims, request.user, {
+    ? plainToInstance(UserAccessTokenClaims, request.user, {
         excludeExtraneousValues: true,
       })
     : null;

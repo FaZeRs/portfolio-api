@@ -37,6 +37,6 @@ export class MailController {
     @Body() input: ContactInput,
   ): Promise<void> {
     this.logger.log(ctx, `${this.sendContactMessage.name} was called`);
-    return await this.mailService.sendContactMessage(ctx, input);
+    return this.mailService.sendContactMessage(ctx, input);
   }
 }

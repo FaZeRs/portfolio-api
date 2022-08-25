@@ -1,4 +1,4 @@
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { CreateLinkInput, UpdateLinkInput } from '../dto/link-input.dto';
@@ -32,7 +32,7 @@ export class LinkService {
   ): Promise<LinkOutput> {
     this.logger.log(ctx, `${this.create.name} was called`);
 
-    const link = plainToClass(Link, input);
+    const link = plainToInstance(Link, input);
 
     const actor: Actor = ctx.user;
 
@@ -48,7 +48,7 @@ export class LinkService {
 
     this.projectService.addLink(ctx, project, savedLink);
 
-    return plainToClass(LinkOutput, savedLink, {
+    return plainToInstance(LinkOutput, savedLink, {
       excludeExtraneousValues: true,
     });
   }
@@ -72,7 +72,7 @@ export class LinkService {
       skip: offset,
     });
 
-    const linksOutput = plainToClass(LinkOutput, links, {
+    const linksOutput = plainToInstance(LinkOutput, links, {
       excludeExtraneousValues: true,
     });
 
@@ -89,7 +89,7 @@ export class LinkService {
       },
     });
 
-    return plainToClass(LinkOutput, link, {
+    return plainToInstance(LinkOutput, link, {
       excludeExtraneousValues: true,
     });
   }
@@ -119,13 +119,13 @@ export class LinkService {
 
     const updatedLink: Link = {
       ...link,
-      ...plainToClass(Link, input),
+      ...plainToInstance(Link, input),
     };
 
     this.logger.log(ctx, `calling ${Repository.name}.save`);
     const savedLink = await this.repository.save(updatedLink);
 
-    return plainToClass(LinkOutput, savedLink, {
+    return plainToInstance(LinkOutput, savedLink, {
       excludeExtraneousValues: true,
     });
   }

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 
 import { UserService } from '../../user/services/user.service';
 import { ROLE } from '../constants/role.constant';
@@ -65,7 +65,7 @@ export class AuthService {
     input.isAccountDisabled = false;
 
     const registeredUser = await this.userService.createUser(ctx, input);
-    return plainToClass(RegisterOutput, registeredUser, {
+    return plainToInstance(RegisterOutput, registeredUser, {
       excludeExtraneousValues: true,
     });
   }
@@ -103,7 +103,7 @@ export class AuthService {
         { expiresIn: this.configService.get('jwt.accessTokenExpiresInSec') },
       ),
     };
-    return plainToClass(AuthTokenOutput, authToken, {
+    return plainToInstance(AuthTokenOutput, authToken, {
       excludeExtraneousValues: true,
     });
   }

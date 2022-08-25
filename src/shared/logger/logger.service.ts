@@ -86,15 +86,7 @@ export class AppLogger {
     message: string,
     meta?: Record<string, any>,
   ): Logger {
-    const timestamp = new Date().toISOString();
-
-    return this.logger.info({
-      message,
-      contextName: this.context,
-      ctx,
-      timestamp,
-      ...meta,
-    });
+    return this.info(ctx, message, meta);
   }
 
   info(

@@ -3,7 +3,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { hash, verify } from 'argon2';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -30,14 +30,14 @@ export class UserService {
   ): Promise<UserOutput> {
     this.logger.log(ctx, `${this.createUser.name} was called`);
 
-    const user = plainToClass(User, input);
+    const user = plainToInstance(User, input);
 
     user.password = await hash(input.password);
 
     this.logger.log(ctx, `calling ${Repository.name}.saveUser`);
     await this.repository.save(user);
 
-    return plainToClass(UserOutput, user, {
+    return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
   }
@@ -60,7 +60,7 @@ export class UserService {
     const match = await verify(user.password, pass);
     if (!match) throw new UnauthorizedException();
 
-    return plainToClass(UserOutput, user, {
+    return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
   }
@@ -79,7 +79,7 @@ export class UserService {
       skip: offset,
     });
 
-    const usersOutput = plainToClass(UserOutput, users, {
+    const usersOutput = plainToInstance(UserOutput, users, {
       excludeExtraneousValues: true,
     });
 
@@ -96,7 +96,7 @@ export class UserService {
       },
     });
 
-    return plainToClass(UserOutput, user, {
+    return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
   }
@@ -111,7 +111,7 @@ export class UserService {
       },
     });
 
-    return plainToClass(UserOutput, user, {
+    return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
   }
@@ -129,7 +129,7 @@ export class UserService {
       },
     });
 
-    return plainToClass(UserOutput, user, {
+    return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
   }
@@ -156,13 +156,13 @@ export class UserService {
     // merges the input (2nd line) to the found user (1st line)
     const updatedUser: User = {
       ...user,
-      ...plainToClass(User, input),
+      ...plainToInstance(User, input),
     };
 
     this.logger.log(ctx, `calling ${Repository.name}.save`);
     await this.repository.save(updatedUser);
 
-    return plainToClass(UserOutput, updatedUser, {
+    return plainToInstance(UserOutput, updatedUser, {
       excludeExtraneousValues: true,
     });
   }

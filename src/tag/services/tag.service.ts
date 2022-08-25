@@ -1,4 +1,4 @@
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { CreateTagInput, UpdateTagInput } from '../dto/tag-input.dto';
@@ -26,7 +26,7 @@ export class TagService {
   async create(ctx: RequestContext, input: CreateTagInput): Promise<TagOutput> {
     this.logger.log(ctx, `${this.create.name} was called`);
 
-    const tag = plainToClass(Tag, input);
+    const tag = plainToInstance(Tag, input);
 
     const actor: Actor = ctx.user;
 
@@ -40,7 +40,7 @@ export class TagService {
     this.logger.log(ctx, `calling ${Repository.name}.save`);
     const savedTag = await this.repository.save(tag);
 
-    return plainToClass(TagOutput, savedTag, {
+    return plainToInstance(TagOutput, savedTag, {
       excludeExtraneousValues: true,
     });
   }
@@ -59,7 +59,7 @@ export class TagService {
       skip: offset,
     });
 
-    const tagsOutput = plainToClass(TagOutput, tags, {
+    const tagsOutput = plainToInstance(TagOutput, tags, {
       excludeExtraneousValues: true,
     });
 
@@ -85,7 +85,7 @@ export class TagService {
       throw new UnauthorizedException();
     }
 
-    return plainToClass(TagOutput, tag, {
+    return plainToInstance(TagOutput, tag, {
       excludeExtraneousValues: true,
     });
   }
@@ -115,13 +115,13 @@ export class TagService {
 
     const updatedTag: Tag = {
       ...tag,
-      ...plainToClass(Tag, input),
+      ...plainToInstance(Tag, input),
     };
 
     this.logger.log(ctx, `calling ${Repository.name}.save`);
     const savedTag = await this.repository.save(updatedTag);
 
-    return plainToClass(TagOutput, savedTag, {
+    return plainToInstance(TagOutput, savedTag, {
       excludeExtraneousValues: true,
     });
   }

@@ -23,6 +23,6 @@ export class MailService {
     input: ContactInput,
   ): Promise<void> {
     this.logger.log(ctx, `${this.sendContactMessage.name} was called`);
-    this.mailQueue.add('contact', input);
+    await this.mailQueue.add('contact', input);
   }
 }
