@@ -1,7 +1,6 @@
 import {
   Injectable,
   UnauthorizedException,
-  NotFoundException,
 } from '@nestjs/common';
 import { hash, verify } from 'argon2';
 import { plainToClass } from 'class-transformer';

@@ -3,7 +3,6 @@ import {
   IsOptional,
   IsString,
   IsBoolean,
-  IsHexColor,
 } from 'class-validator';
 
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';

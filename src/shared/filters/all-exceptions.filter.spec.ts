@@ -20,6 +20,7 @@ describe('AllExceptionsFilter', () => {
   let mockResponse: any;
 
   const mockConfigService = {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     get: (key) => 'development',
   };
   const mockedLogger = {

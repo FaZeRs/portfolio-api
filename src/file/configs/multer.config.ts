@@ -6,10 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import * as multerS3 from 'multer-s3';
 import { S3Client } from '@aws-sdk/client-s3';
-import { NodeHttpHandler, NodeHttp2Handler } from '@aws-sdk/node-http-handler';
-import { Agent } from 'http';
-import { Credentials, Endpoint } from '@aws-sdk/types';
-import { readFileSync } from 'fs';
+import { Credentials } from '@aws-sdk/types';
 
 import { AppLogger } from '../../shared/logger/logger.service';
 
