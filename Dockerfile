@@ -1,30 +1,38 @@
-FROM node:18-alpine as build
+FROM node:18-alpine As development
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
+
 RUN npm ci
 
-COPY . .
+COPY --chown=node:node . .
 
-ARG APP_ENV=production
-ENV NODE_ENV=${APP_ENV}
+USER node
+
+FROM node:18-alpine As build
+
+WORKDIR /usr/src/app
+
+COPY --chown=node:node package*.json ./
+
+COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
+
+COPY --chown=node:node . .
 
 RUN npm run build
 
-RUN npm prune
+ENV NODE_ENV production
+
+RUN npm ci --only=production && npm cache clean --force
+
+USER node
 
 FROM node:18-alpine
 
-ARG APP_ENV=production
-ENV NODE_ENV=${APP_ENV}
-
-WORKDIR /usr/src/app
-COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/package*.json ./
-COPY --from=build /usr/src/app/dist ./dist
+COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
 EXPOSE 3000
 
-USER node
-CMD [ "npm", "run", "start:prod" ]
+CMD [ "node" , "dist/src/main.js" ]
