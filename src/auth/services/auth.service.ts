@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, ForbiddenException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { plainToInstance } from 'class-transformer';
@@ -59,6 +59,11 @@ export class AuthService {
     input: RegisterInput,
   ): Promise<RegisterOutput> {
     this.logger.log(ctx, `${this.register.name} was called`);
+
+    const isProMood = this.configService.get<string>('env') !== 'development';
+    if (isProMood) {
+      throw new ForbiddenException('Registration is disabled in production');
+    }
 
     // TODO : Setting default role as USER here. Will add option to change this later via ADMIN users.
     input.roles = [ROLE.USER];
