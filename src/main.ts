@@ -17,18 +17,21 @@ async function bootstrap() {
   app.use(compression());
 
   const configService = app.get(ConfigService);
-  Sentry.init({
-    dsn: configService.get<string>('sentry.dsn'),
-    environment: configService.get<string>('env'),
-    integrations: [
-      new Sentry.Integrations.Http({ tracing: true }),
-      new Integrations.Express(),
-    ],
-    tracesSampleRate: 1.0,
-  });
-  app.use(Sentry.Handlers.requestHandler());
-  app.use(Sentry.Handlers.tracingHandler());
-  app.use(Sentry.Handlers.errorHandler());
+  const sentryDsn = configService.get<string>('sentry.dsn');
+  if (sentryDsn) {
+    Sentry.init({
+      dsn: sentryDsn,
+      environment: configService.get<string>('env'),
+      integrations: [
+        new Sentry.Integrations.Http({ tracing: true }),
+        new Integrations.Express(),
+      ],
+      tracesSampleRate: 1.0,
+    });
+    app.use(Sentry.Handlers.requestHandler());
+    app.use(Sentry.Handlers.tracingHandler());
+    app.use(Sentry.Handlers.errorHandler());
+  }
 
   app.useGlobalPipes(new ValidationPipe(VALIDATION_PIPE_OPTIONS));
   app.use(RequestIdMiddleware);

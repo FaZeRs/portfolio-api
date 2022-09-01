@@ -60,7 +60,7 @@ export class AuthService {
   ): Promise<RegisterOutput> {
     this.logger.log(ctx, `${this.register.name} was called`);
 
-    const isProMood = this.configService.get<string>('env') !== 'development';
+    const isProMood = this.configService.get<string>('env') === 'production';
     if (isProMood) {
       throw new ForbiddenException('Registration is disabled in production');
     }

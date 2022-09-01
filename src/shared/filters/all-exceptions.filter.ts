@@ -83,7 +83,7 @@ export class AllExceptionsFilter<T> implements ExceptionFilter {
     });
 
     // Suppress original internal server error details in prod mode
-    const isProdMode = this.config.get<string>('env') !== 'development';
+    const isProdMode = this.config.get<string>('env') === 'production';
     if (isProdMode && statusCode === HttpStatus.INTERNAL_SERVER_ERROR) {
       error.message = 'Internal server error';
     }

@@ -6,8 +6,8 @@ export const configModuleOptions: ConfigModuleOptions = {
   envFilePath: '.env',
   load: [configuration],
   validationSchema: Joi.object({
-    APP_ENV: Joi.string()
-      .valid('development', 'production', 'test')
+    NODE_ENV: Joi.string()
+      .valid('development', 'production', 'test', 'provision')
       .default('development'),
     APP_PORT: Joi.number().required(),
     DB_HOST: Joi.string().required(),
@@ -28,11 +28,15 @@ export const configModuleOptions: ConfigModuleOptions = {
     REDIS_HOST: Joi.string().required(),
     REDIS_PORT: Joi.number().required(),
     REDIS_PASSWORD: Joi.string().required(),
-    SENTRY_DSN: Joi.string().required(),
+    SENTRY_DSN: Joi.string().optional(),
     AWS_S3_ENDPOINT: Joi.string().required(),
     AWS_S3_BUCKET: Joi.string().required(),
     AWS_S3_ACCESS_KEY: Joi.string().required(),
     AWS_S3_SECRET_KEY: Joi.string().required(),
     AWS_S3_REGION: Joi.string().required(),
   }),
+  validationOptions: {
+    allowUnknown: false,
+    abortEarly: true,
+  }
 };
