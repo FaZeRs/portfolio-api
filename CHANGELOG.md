@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/FaZeRs/portfolio-api/compare/v1.1.0...v1.1.1) (2022-09-12)
+
+
+### Bug Fixes
+
+* expose 3000 port in docker image ([b016de3](https://github.com/FaZeRs/portfolio-api/commit/b016de3576d555c74bd1f0ba54cabc16994c6967))
+* removed stage name from Dockefile ([9e2f70b](https://github.com/FaZeRs/portfolio-api/commit/9e2f70b2bba8c75445f1fc2b3bc32a18a2cb0f05))
+
 ## [1.1.0](https://github.com/FaZeRs/portfolio-api/compare/v1.0.0...v1.1.0) (2022-09-12)
 
 
