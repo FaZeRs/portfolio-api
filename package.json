@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@aws-sdk/abort-controller": "^3.168.0",
-    "@aws-sdk/client-s3": "^3.168.0",
+    "@aws-sdk/client-s3": "^3.170.0",
     "@aws-sdk/node-http-handler": "^3.168.0",
     "@nestjs-modules/mailer": "^1.8.1",
     "@nestjs/bull": "^0.6.1",
