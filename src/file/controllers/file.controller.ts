@@ -65,18 +65,6 @@ export class FileController {
     return { data: output, meta: {} };
   }
 
-  @Post('uploads')
-  @ApiOperation({
-    summary: 'Upload multiple files API',
-  })
-  @ApiConsumes('multipart/form-data')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FilesInterceptor('files'))
-  uploadMultiple(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
-  }
-
   @Delete(':id')
   @ApiOperation({
     summary: 'Remove image API',
