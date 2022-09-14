@@ -72,14 +72,29 @@ describe('UserController (e2e)', () => {
       const expectedOutput = adminUser;
 
       return request(app.getHttpServer())
-        .get('/users/1')
+        .get('/users/' + adminUser.id)
+        .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.OK)
         .expect({ data: expectedOutput, meta: {} });
+    });
+
+    it('Unauthorized error when BearerToken is not provided', async () => {
+      return request(app.getHttpServer())
+        .get('/users/' + adminUser.id)
+        .expect(HttpStatus.UNAUTHORIZED);
+    });
+
+    it('Unauthorized error when BearerToken is wrong', async () => {
+      return request(app.getHttpServer())
+        .get('/users/' + adminUser.id)
+        .set('Authorization', 'Bearer ' + 'abcd')
+        .expect(HttpStatus.UNAUTHORIZED);
     });
 
     it('throws NOT_FOUND when user doesnt exist', () => {
       return request(app.getHttpServer())
         .get('/users/99')
+        .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.NOT_FOUND);
     });
   });
@@ -97,7 +112,8 @@ describe('UserController (e2e)', () => {
       };
 
       return request(app.getHttpServer())
-        .patch('/users/1')
+        .patch('/users/' + adminUser.id)
+        .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .send(updateUserInput)
         .expect(HttpStatus.OK)
         .expect((res) => {
@@ -110,13 +126,15 @@ describe('UserController (e2e)', () => {
     it('throws NOT_FOUND when user doesnt exist', () => {
       return request(app.getHttpServer())
         .patch('/users/99')
+        .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.NOT_FOUND);
     });
 
     it('update fails when incorrect password type', () => {
       updateUserInput.password = 12345 as any;
       return request(app.getHttpServer())
-        .patch('/users/1')
+        .patch('/users/' + adminUser.id)
+        .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.BAD_REQUEST)
         .send(updateUserInput)
         .expect((res) => {
