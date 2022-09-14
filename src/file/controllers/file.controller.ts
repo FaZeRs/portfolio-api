@@ -1,9 +1,7 @@
 import {
   Controller,
   Post,
-  UseInterceptors,
   UploadedFile,
-  UploadedFiles,
   UseGuards,
   HttpStatus,
   Param,
@@ -13,10 +11,8 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiResponse,
-  ApiConsumes,
   ApiTags,
 } from '@nestjs/swagger';
-import { FilesInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
 import { plainToInstance } from 'class-transformer';
 
