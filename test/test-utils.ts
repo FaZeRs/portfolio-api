@@ -25,8 +25,8 @@ export const resetDBBeforeTest = async (): Promise<void> => {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'root',
-    password: 'root',
+    username: 'test',
+    password: 'example',
   });
 
   await connection.query(`drop database if exists ${TEST_DB_NAME}`);
@@ -42,8 +42,8 @@ export const createDBEntities = async (): Promise<void> => {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'root',
-    password: 'root',
+    username: 'test',
+    password: 'example',
     database: TEST_DB_NAME,
     entities: [__dirname + '/../src/**/*.entity{.ts,.js}'],
     synchronize: true,

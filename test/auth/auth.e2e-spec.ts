@@ -52,7 +52,6 @@ describe('AuthController (e2e)', () => {
     };
 
     const registerOutput = {
-      id: 2,
       name: 'e2etester',
       username: 'e2etester',
       roles: [ROLE.USER],
