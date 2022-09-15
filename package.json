@@ -97,7 +97,7 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.170.0",
+    "@aws-sdk/types": "^3.171.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@compodoc/compodoc": "^1.1.19",
