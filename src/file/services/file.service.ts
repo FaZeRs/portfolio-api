@@ -75,7 +75,6 @@ export class FileService {
     id: string,
     file,
   ): Promise<FileOutput> {
-    console.log('file', file);
     const savedFile = await this.create(ctx, file);
     // todo: delete old logo if it exists
     await this.experienceService.addLogo(

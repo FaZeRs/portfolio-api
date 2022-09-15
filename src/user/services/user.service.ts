@@ -1,6 +1,7 @@
 import {
   Injectable,
   UnauthorizedException,
+  NotFoundException,
 } from '@nestjs/common';
 import { hash, verify } from 'argon2';
 import { plainToInstance } from 'class-transformer';
@@ -96,6 +97,10 @@ export class UserService {
       },
     });
 
+    if (!user) {
+      throw new NotFoundException();
+    }
+
     return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
@@ -110,6 +115,10 @@ export class UserService {
         id,
       },
     });
+
+    if (!user) {
+      throw new NotFoundException();
+    }
 
     return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
@@ -129,6 +138,10 @@ export class UserService {
       },
     });
 
+    if (!user) {
+      throw new NotFoundException();
+    }
+
     return plainToInstance(UserOutput, user, {
       excludeExtraneousValues: true,
     });
@@ -147,6 +160,10 @@ export class UserService {
         id: userId,
       },
     });
+
+    if (!user) {
+      throw new NotFoundException();
+    }
 
     // Hash the password if it exists in the input payload.
     if (input.password) {

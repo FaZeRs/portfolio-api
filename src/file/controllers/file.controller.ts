@@ -1,9 +1,7 @@
 import {
   Controller,
   Post,
-  UseInterceptors,
   UploadedFile,
-  UploadedFiles,
   UseGuards,
   HttpStatus,
   Param,
@@ -13,10 +11,8 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiResponse,
-  ApiConsumes,
   ApiTags,
 } from '@nestjs/swagger';
-import { FilesInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
 import { plainToInstance } from 'class-transformer';
 
@@ -63,18 +59,6 @@ export class FileController {
       excludeExtraneousValues: true,
     });
     return { data: output, meta: {} };
-  }
-
-  @Post('uploads')
-  @ApiOperation({
-    summary: 'Upload multiple files API',
-  })
-  @ApiConsumes('multipart/form-data')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FilesInterceptor('files'))
-  uploadMultiple(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
   }
 
   @Delete(':id')
