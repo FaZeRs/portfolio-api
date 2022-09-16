@@ -33,11 +33,11 @@
 
 ## Installation
 
-Note: when using docker, all the `npm` commands can also be performed using `./scripts/npm` (for example `./scripts/npm install`).
+Note: when using docker, all the `pnpm` commands can also be performed using `./scripts/pnpm` (for example `./scripts/pnpm install`).
 This script allows you to run the same commands inside the same environment and versions than the service, without relying on what is installed on the host.
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 Create a `.env` file from the template `.env.template` file.
@@ -99,23 +99,23 @@ Commands:
 
 ```bash
 # development
-$ npm run start
+$ pnpm start
 
 # watch mode
-$ npm run start:dev
+$ pnpm start:dev
 
 # production mode
-$ npm run start:prod
+$ pnpm start:prod
 ```
 
 ### Docker
 
 ```bash
 # build image
-$ docker build -t my-app .
+$ docker build -t portfolio-api .
 
 # run container from image
-$ docker run -p 3000:3000 --volume 'pwd':/usr/src/app --network --env-file .env my-app
+$ docker run -p 3000:3000 --volume 'pwd':/usr/src/app --network="bridge" --env-file .env portfolio-api
 
 # run using docker compose
 $ docker compose up
@@ -125,26 +125,26 @@ $ docker compose up
 
 ```bash
 # unit tests
-$ npm run test
+$ pnpm test
 
 # e2e tests
-$ npm run test:e2e
+$ pnpm test:e2e
 
 # test coverage
-$ npm run test:cov
+$ pnpm test:cov
 ```
 
 ## Migrations
 
 ```bash
 # generate migration (replace CreateUsers with name of the migration)
-$ npm run migration:generate -- -n CreateUsers
+$ pnpm migration:generate -- -n CreateUsers
 
 # run migration
-$ npm run migration:run
+$ pnpm migration:run
 
 # revert migration
-$ npm run migration:revert
+$ pnpm migration:revert
 ```
 
 ## Architecture

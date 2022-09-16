@@ -7,7 +7,7 @@ services:
       target: development
       args:
         - APP_ENV
-    command: npm run start:dev
+    command: pnpm start:dev
     ports:
       - "${APP_PORT}:3000"
     volumes:

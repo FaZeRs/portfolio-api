@@ -23,4 +23,4 @@ if [ -z "$(getAppImage)" ]; then
 fi
 
 echo -e "\e[32m\e[1mRunning npm inside docker\e[0m"
-docker run -v ${PWD}:/usr/src/app -it --rm "$(getAppImage)" npm $@
+docker run -v ${PWD}:/usr/src/app -it --rm "$(getAppImage)" pnpm $@

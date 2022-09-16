@@ -2,9 +2,12 @@ FROM node:18-alpine As development
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node package*.json ./
+RUN corepack enable
 
-RUN npm ci
+COPY --chown=node:node .npmrc package.json pnpm-lock.yaml ./
+
+RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store \
+  pnpm install --frozen-lockfile
 
 COPY --chown=node:node . .
 
@@ -14,20 +17,25 @@ FROM node:18-alpine As build
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node package*.json ./
+RUN corepack enable
+
+COPY --chown=node:node package.json pnpm-lock.yaml ./
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node . .
 
-RUN npm run build
+ARG APP_ENV=production
+ENV NODE_ENV=${APP_ENV}
 
-ENV NODE_ENV production
-
-RUN npm ci --only=production && npm cache clean --force
+RUN pnpm build
 
 USER node
 
 FROM node:18-alpine
 
+ARG APP_ENV=production
+ENV NODE_ENV=${APP_ENV}
+
+COPY --chown=node:node package.json pnpm-lock.yaml ./
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
