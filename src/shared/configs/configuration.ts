@@ -29,7 +29,7 @@ export default (): any => ({
   defaultAdminUserPassword: process.env.DEFAULT_ADMIN_USER_PASSWORD,
   mail: {
     host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
+    port: parseInt(process.env.MAIL_PORT, 10),
     user: process.env.MAIL_USER,
     password: process.env.MAIL_PASSWORD,
     from: process.env.MAIL_FROM,

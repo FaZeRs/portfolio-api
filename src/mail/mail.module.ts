@@ -17,8 +17,7 @@ import { SharedModule } from '../shared/shared.module';
       useFactory: async (configService: ConfigService) => ({
         transport: {
           host: configService.get<string>('mail.host'),
-          ignoreTLS: true,
-          secure: false,
+          port: configService.get<number>('mail.port'),
           auth: {
             user: configService.get<string>('mail.user'),
             pass: configService.get<string>('mail.password'),
