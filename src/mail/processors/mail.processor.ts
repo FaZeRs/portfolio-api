@@ -57,6 +57,7 @@ export class MailProcessor {
     await this.mailerService.sendMail({
       to: this.configService.get('mail.from'),
       from: `"${job.data.name}" <${job.data.email}>`,
+      replyTo: job.data.email,
       subject: 'New contact message',
       template: 'contact',
       context: {
