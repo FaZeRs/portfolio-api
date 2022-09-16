@@ -7,23 +7,29 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=coverage)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
 
+| Repository                                                          | Info               |
+|---------------------------------------------------------------------|--------------------|
+| [portfolio-client](https://github.com/FaZeRs/portfolio-client)      | Frontend           |
+| [portfolio-api](https://github.com/FaZeRs/portfolio-api)            | Rest API           |
+| [portfolio-server](https://github.com/FaZeRs/portfolio-server)      | Docker Environment |
+
 ## Features
 
-| Feature                  | Info               |
-|--------------------------|--------------------|
-| Authentication           | JWT                |
-| Authorization            | RBAC (Role based)  |
-| ORM Integration          | TypeORM            |
-| DB Migrations            | TypeORM            |
-| Logging                  | winston            |
-| Request Validation       | class-validator    |
-| Pagination               | SQL offset & limit |
-| Docker Ready             | Dockerfile         |
-| Auto-generated OpenAPI   | -                  |
-| Auto-generated ChangeLog | -                  |
-| Queue                    | Bull               |
-| File System              | Minio              |
-| Mailing                  | Nodemailer         |
+| Feature                  | Info                                                           |
+|--------------------------|----------------------------------------------------------------|
+| Authentication           | [JWT](https://github.com/auth0/node-jsonwebtoken)              |
+| Authorization            | RBAC (Role based)                                              |
+| ORM Integration          | [TypeORM](https://github.com/typeorm/typeorm)                  |
+| DB Migrations            | [TypeORM](https://github.com/typeorm/typeorm)                  |
+| Logging                  | [winston](https://github.com/winstonjs/winston)                |
+| Request Validation       | [class-validator](https://github.com/typestack/class-validator)|
+| Pagination               | SQL offset & limit                                             |
+| Docker Ready             | [Dockerfile](https://www.docker.com/)                          |
+| Auto-generated OpenAPI   | -                                                              |
+| Auto-generated ChangeLog | [Release Please](https://github.com/googleapis/release-please) |
+| Queue                    | [Bull](https://github.com/OptimalBits/bull)                    |
+| File System              | [Minio](https://github.com/minio/minio)                        |
+| Mailing                  | [Nodemailer](https://github.com/nodemailer/nodemailer)         |
 
 ## Installation
 
