@@ -38,6 +38,9 @@ $ pnpm install
 ```
 
 Create a `.env` file from the template `.env.template` file.
+```bash
+cp .env.template .env
+```
 
 Generate public and private key pair for jwt authentication:
 
@@ -147,15 +150,3 @@ $ pnpm migration:revert
 ## Architecture
 
 - [Project Structure](./docs/project-structure.md)
-
-## Contributors
-
-- [Nauris Linde](https://github.com/FaZeRs)
-
-## External Links
-
-<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo.svg" width="150" alt="Nest Logo" /></a>
-
-<a href="https://github.com/monstar-lab-oss/nestjs-starter-rest-api" target="blank"><img src="https://avatars.githubusercontent.com/u/60748511" height="100" alt="Monstarlab Logo" /></a>
-
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
