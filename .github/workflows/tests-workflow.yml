@@ -20,7 +20,7 @@ jobs:
           cache: pnpm
 
       - name: Install
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Lint
         run: pnpm lint
@@ -44,7 +44,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: pnpm
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm test
 
   test-e2e:
@@ -61,7 +61,7 @@ jobs:
 
       - run: cp .env.test .env
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
 
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml up -d mysqldb redis minio
