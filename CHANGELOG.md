@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/FaZeRs/portfolio-api/compare/v1.1.1...v1.1.2) (2022-09-16)
+
+
+### Bug Fixes
+
+* added replyTo option to contact message ([45bcaf9](https://github.com/FaZeRs/portfolio-api/commit/45bcaf9f0dc7b28790d4c6218189053ba7a575b1))
+* updated mail configuration ([7a7b76e](https://github.com/FaZeRs/portfolio-api/commit/7a7b76ee43656925e0ac471f14d1048d72a7053c))
+
 ## [1.1.1](https://github.com/FaZeRs/portfolio-api/compare/v1.1.0...v1.1.1) (2022-09-12)
 
 

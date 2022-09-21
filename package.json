@@ -1,6 +1,6 @@
 {
   "name": "portfolio-api",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "packageManager": "pnpm@7.11.0",
   "description": "Portfolio API Repository based on NestJS",
