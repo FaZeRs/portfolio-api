@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/FaZeRs/portfolio-api/compare/v1.1.2...v1.1.3) (2022-09-22)
+
+
+### Bug Fixes
+
+* added release string to sentry init ([f336f96](https://github.com/FaZeRs/portfolio-api/commit/f336f96ff68581ba3058b10ca3a34d50ddaf9fdd))
+
 ## [1.1.2](https://github.com/FaZeRs/portfolio-api/compare/v1.1.1...v1.1.2) (2022-09-16)
 
 
