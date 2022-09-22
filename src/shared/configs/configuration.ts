@@ -1,5 +1,9 @@
 export default (): any => ({
-  env: process.env.NODE_ENV,
+  env: process.env.APP_ENV,
+  npmPackage: {
+    name: process.env.npm_package_name,
+    version: process.env.npm_package_version,
+  },
   port: process.env.APP_PORT,
   database: {
     host: process.env.DB_HOST,

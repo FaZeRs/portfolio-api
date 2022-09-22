@@ -6,7 +6,7 @@ export const configModuleOptions: ConfigModuleOptions = {
   envFilePath: '.env',
   load: [configuration],
   validationSchema: Joi.object({
-    NODE_ENV: Joi.string()
+    APP_ENV: Joi.string()
       .valid('development', 'production', 'test', 'provision')
       .default('development'),
     APP_PORT: Joi.number().required(),

@@ -22,6 +22,8 @@ async function bootstrap() {
     Sentry.init({
       dsn: sentryDsn,
       environment: configService.get<string>('env'),
+      release: `${configService.get<string>('npmPackage.name')}
+        @${configService.get<string>('npmPackage.version')}`,
       integrations: [
         new Sentry.Integrations.Http({ tracing: true }),
         new Integrations.Express(),
