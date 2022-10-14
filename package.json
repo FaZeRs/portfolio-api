@@ -69,7 +69,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@sentry/node": "^7.13.0",
     "@sentry/tracing": "^7.13.0",
-    "argon2": "^0.29.1",
+    "argon2": "^0.30.1",
     "aws-sdk": "^2.1221.0",
     "bcrypt": "^5.0.1",
     "bull": "^4.9.0",
