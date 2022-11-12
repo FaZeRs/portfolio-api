@@ -1,4 +1,4 @@
-FROM node:18-alpine As development
+FROM node:19-alpine As development
 
 WORKDIR /usr/src/app
 
@@ -13,7 +13,7 @@ COPY --chown=node:node . .
 
 USER node
 
-FROM node:18-alpine As build
+FROM node:19-alpine As build
 
 WORKDIR /usr/src/app
 
@@ -30,7 +30,7 @@ RUN pnpm build
 
 USER node
 
-FROM node:18-alpine
+FROM node:19-alpine
 
 ARG APP_ENV=production
 ENV NODE_ENV=${APP_ENV}
