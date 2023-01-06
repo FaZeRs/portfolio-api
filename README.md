@@ -1,8 +1,11 @@
 # Portfolio API
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![Build Badge](https://github.com/FaZeRs/portfolio-api/workflows/Build/badge.svg)
 ![Tests Badge](https://github.com/FaZeRs/portfolio-api/workflows/Tests/badge.svg)
-![CodeQL Badge](https://github.com/FaZeRs/portfolio-api/workflows/CodeQL/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=coverage)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
 
 | Repository                                                          | Info               |
 |---------------------------------------------------------------------|--------------------|
