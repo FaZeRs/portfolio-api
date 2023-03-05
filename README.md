@@ -7,29 +7,29 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=coverage)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=FaZeRs_portfolio-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=FaZeRs_portfolio-api)
 
-| Repository                                                          | Info               |
-|---------------------------------------------------------------------|--------------------|
-| [portfolio-client](https://github.com/FaZeRs/portfolio-client)      | Frontend           |
-| [portfolio-api](https://github.com/FaZeRs/portfolio-api)            | Rest API           |
-| [portfolio-server](https://github.com/FaZeRs/portfolio-server)      | Docker Environment |
+| Repository                                                     | Info               |
+| -------------------------------------------------------------- | ------------------ |
+| [portfolio-client](https://github.com/FaZeRs/portfolio-client) | Frontend           |
+| [portfolio-api](https://github.com/FaZeRs/portfolio-api)       | Rest API           |
+| [portfolio-server](https://github.com/FaZeRs/portfolio-server) | Docker Environment |
 
 ## Features
 
-| Feature                  | Info                                                           |
-|--------------------------|----------------------------------------------------------------|
-| Authentication           | [JWT](https://github.com/auth0/node-jsonwebtoken)              |
-| Authorization            | RBAC (Role based)                                              |
-| ORM Integration          | [TypeORM](https://github.com/typeorm/typeorm)                  |
-| DB Migrations            | [TypeORM](https://github.com/typeorm/typeorm)                  |
-| Logging                  | [winston](https://github.com/winstonjs/winston)                |
-| Request Validation       | [class-validator](https://github.com/typestack/class-validator)|
-| Pagination               | SQL offset & limit                                             |
-| Docker Ready             | [Dockerfile](https://www.docker.com/)                          |
-| Auto-generated OpenAPI   | -                                                              |
-| Auto-generated ChangeLog | [Release Please](https://github.com/googleapis/release-please) |
-| Queue                    | [Bull](https://github.com/OptimalBits/bull)                    |
-| File System              | [Minio](https://github.com/minio/minio)                        |
-| Mailing                  | [Nodemailer](https://github.com/nodemailer/nodemailer)         |
+| Feature                  | Info                                                            |
+| ------------------------ | --------------------------------------------------------------- |
+| Authentication           | [JWT](https://github.com/auth0/node-jsonwebtoken)               |
+| Authorization            | RBAC (Role based)                                               |
+| ORM Integration          | [TypeORM](https://github.com/typeorm/typeorm)                   |
+| DB Migrations            | [TypeORM](https://github.com/typeorm/typeorm)                   |
+| Logging                  | [winston](https://github.com/winstonjs/winston)                 |
+| Request Validation       | [class-validator](https://github.com/typestack/class-validator) |
+| Pagination               | SQL offset & limit                                              |
+| Docker Ready             | [Dockerfile](https://www.docker.com/)                           |
+| Auto-generated OpenAPI   | -                                                               |
+| Auto-generated ChangeLog | [Release Please](https://github.com/googleapis/release-please)  |
+| Queue                    | [Bull](https://github.com/OptimalBits/bull)                     |
+| File System              | [Minio](https://github.com/minio/minio)                         |
+| Mailing                  | [Nodemailer](https://github.com/nodemailer/nodemailer)          |
 
 ## Installation
 
@@ -41,6 +41,7 @@ $ pnpm install
 ```
 
 Create a `.env` file from the template `.env.template` file.
+
 ```bash
 cp .env.template .env
 ```
@@ -50,11 +51,13 @@ Generate public and private key pair for jwt authentication:
 ### With docker
 
 Run this command:
+
 ```bash
 ./scripts/generate-jwt-keys
 ```
 
 It will output something like this. You only need to add it to your `.env` file.
+
 ```
 To setup the JWT keys, please add the following values to your .env file:
 JWT_PUBLIC_KEY_BASE64="(long base64 content)"
@@ -94,7 +97,7 @@ We can run the project with or without docker.
 
 To run the server without Docker we need this pre-requisite:
 
-- MySQL server running
+- PostgreSQL server running
 - Redis server running
 - Minio server running
 
