@@ -34,7 +34,7 @@ export class Project {
   @Column({ nullable: true })
   shortDescription: string;
 
-  @Column({ nullable: true, type: 'longtext' })
+  @Column({ nullable: true })
   description: string;
 
   @Column({

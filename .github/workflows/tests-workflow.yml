@@ -64,7 +64,7 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
 
       - name: Build the docker-compose stack
-        run: docker-compose -f docker-compose.yml up -d mysqldb redis minio
+        run: docker-compose -f docker-compose.yml up -d pgsqldb redis minio
 
       - name: Check running containers
         run: docker ps -a

@@ -93,7 +93,7 @@ describe('UserController (e2e)', () => {
 
     it('throws NOT_FOUND when user doesnt exist', () => {
       return request(app.getHttpServer())
-        .get('/users/99')
+        .get('/users/e70c84e4-0867-4678-96b7-161f0ef03f2a')
         .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.NOT_FOUND);
     });
@@ -125,7 +125,7 @@ describe('UserController (e2e)', () => {
 
     it('throws NOT_FOUND when user doesnt exist', () => {
       return request(app.getHttpServer())
-        .patch('/users/99')
+        .patch('/users/e70c84e4-0867-4678-96b7-161f0ef03f2a')
         .set('Authorization', 'Bearer ' + authTokenForAdmin.accessToken)
         .expect(HttpStatus.NOT_FOUND);
     });

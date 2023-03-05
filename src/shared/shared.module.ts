@@ -17,7 +17,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type: 'mysql',
+        type: 'postgres',
         host: configService.get<string>('database.host'),
         port: configService.get<number | undefined>('database.port'),
         database: configService.get<string>('database.name'),
@@ -28,7 +28,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
         // This is used to typecast server date/time values to JavaScript Date object and vice versa.
         timezone: 'Z',
         synchronize: false,
-        // debug: configService.get<string>('env') === 'development',
+        debug: configService.get<string>('env') === 'development',
       }),
     }),
     BullModule.forRootAsync({

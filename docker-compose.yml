@@ -41,23 +41,21 @@ services:
       AWS_S3_SECRET_KEY: ${AWS_S3_SECRET_KEY}
       AWS_S3_REGION: ${AWS_S3_REGION}
     depends_on:
-      - mysqldb
+      - pgsqldb
       - redis
       - minio
 
-  mysqldb:
-    image: mysql:latest
+  pgsqldb:
+    image: postgres:latest
     restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password
     ports:
-      - "${DB_PORT}:3306"
+      - "${DB_PORT}:5432"
     volumes:
-      - mysqldata:/var/lib/mysql
+      - pgsqldata:/var/lib/postgresql/data
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASS}"
+      POSTGRES_DB: "${DB_NAME}"
 
   redis:
     image: redis:alpine
@@ -83,6 +81,6 @@ services:
 
 volumes:
   node_modules:
-  mysqldata:
+  pgsqldata:
   redisdata:
   miniodata:
