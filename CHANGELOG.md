@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/FaZeRs/portfolio-api/compare/v1.1.3...v2.0.0) (2023-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* switched from mysql to postgresql database server
+
+### Features
+
+* switched from mysql to postgresql database server ([c8082a8](https://github.com/FaZeRs/portfolio-api/commit/c8082a8fdb7a4249de67b9c9c3bcaae019a67455))
+
+
+### Bug Fixes
+
+* e2e tests ([26508f0](https://github.com/FaZeRs/portfolio-api/commit/26508f04b585e4ea6b73f6e71776bbb5817475b0))
+
 ## [1.1.3](https://github.com/FaZeRs/portfolio-api/compare/v1.1.2...v1.1.3) (2022-09-22)
 
 
