@@ -16,6 +16,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { isUUID } from 'class-validator';
 
 import { ROLE } from '../../auth/constants/role.constant';
 import { Roles } from '../../auth/decorators/role.decorator';
@@ -121,6 +122,10 @@ export class UserController {
   ): Promise<BaseApiResponse<UserOutput>> {
     this.logger.log(ctx, `${this.getUser.name} was called`);
 
+    if (!isUUID(id)) {
+      throw new Error(`Invalid id, UUID format expected but received ${id}`);
+    }
+
     const user = await this.userService.getUserById(ctx, id);
     return { data: user, meta: {} };
   }
@@ -148,6 +153,12 @@ export class UserController {
     @Body() input: UpdateUserInput,
   ): Promise<BaseApiResponse<UserOutput>> {
     this.logger.log(ctx, `${this.updateUser.name} was called`);
+
+    if (!isUUID(userId)) {
+      throw new Error(
+        `Invalid id, UUID format expected but received ${userId}`,
+      );
+    }
 
     const user = await this.userService.updateUser(ctx, userId, input);
     return { data: user, meta: {} };
