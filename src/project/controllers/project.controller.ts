@@ -61,8 +61,8 @@ export class ProjectController {
     @ReqContext() ctx: RequestContext,
     @Body() input: CreateProjectInput,
   ): Promise<BaseApiResponse<ProjectOutput>> {
-    const article = await this.projectService.create(ctx, input);
-    return { data: article, meta: {} };
+    const project = await this.projectService.create(ctx, input);
+    return { data: project, meta: {} };
   }
 
   @Get()

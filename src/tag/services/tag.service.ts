@@ -130,7 +130,7 @@ export class TagService {
     this.logger.log(ctx, `${this.remove.name} was called`);
 
     this.logger.log(ctx, `calling ${Repository.name}.findOne`);
-    const article = await this.repository.findOne({
+    const tag = await this.repository.findOne({
       where: {
         id,
       },
@@ -140,12 +140,12 @@ export class TagService {
 
     const isAllowed = this.aclService
       .forActor(actor)
-      .canDoAction(Action.Delete, article);
+      .canDoAction(Action.Delete, tag);
     if (!isAllowed) {
       throw new UnauthorizedException();
     }
 
     this.logger.log(ctx, `calling ${Repository.name}.remove`);
-    await this.repository.remove(article);
+    await this.repository.remove(tag);
   }
 }

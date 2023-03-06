@@ -58,8 +58,8 @@ export class TagController {
     @ReqContext() ctx: RequestContext,
     @Body() input: CreateTagInput,
   ): Promise<BaseApiResponse<TagOutput>> {
-    const article = await this.tagService.create(ctx, input);
-    return { data: article, meta: {} };
+    const tag = await this.tagService.create(ctx, input);
+    return { data: tag, meta: {} };
   }
 
   @Get()

@@ -61,8 +61,8 @@ export class ExperienceController {
     @ReqContext() ctx: RequestContext,
     @Body() input: CreateExperienceInput,
   ): Promise<BaseApiResponse<ExperienceOutput>> {
-    const article = await this.experienceService.create(ctx, input);
-    return { data: article, meta: {} };
+    const experience = await this.experienceService.create(ctx, input);
+    return { data: experience, meta: {} };
   }
 
   @Get()
