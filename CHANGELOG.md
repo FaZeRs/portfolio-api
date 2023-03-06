@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/FaZeRs/portfolio-api/compare/v2.0.0...v2.0.1) (2023-03-06)
+
+
+### Bug Fixes
+
+* disabled error when user not found by username ([99645d4](https://github.com/FaZeRs/portfolio-api/commit/99645d4aa65651602b982c1e81976f8c8daeff72))
+
 ## [2.0.0](https://github.com/FaZeRs/portfolio-api/compare/v1.1.3...v2.0.0) (2023-03-05)
 
 
